@@ -22,9 +22,7 @@
 
   <modules>
     <module>com.io7m.oatfield.api</module>
-    <module>com.io7m.oatfield.tests.shaded</module>
     <module>com.io7m.oatfield.tests</module>
-    <module>com.io7m.oatfield.vanilla.shaded</module>
     <module>com.io7m.oatfield.vanilla</module>
   </modules>
 
