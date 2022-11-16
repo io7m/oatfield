@@ -25,7 +25,5 @@ module com.io7m.oatfield.vanilla
 
   requires transitive com.io7m.oatfield.api;
 
-  requires biz.aQute.bndlib;
-
   exports com.io7m.oatfield.vanilla;
 }
