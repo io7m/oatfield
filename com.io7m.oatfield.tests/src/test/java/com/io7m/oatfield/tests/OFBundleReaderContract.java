@@ -29,6 +29,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public abstract class OFBundleReaderContract
 {
@@ -246,6 +247,23 @@ public abstract class OFBundleReaderContract
     assertThrows(IOException.class, () -> {
       this.readers.createReader(this.directory.resolve("nonexistent.jar"));
     });
+  }
+
+  /**
+   * Trying to open something that isn't a bundle fails.
+   *
+   * @throws Exception On errors
+   */
+
+  @Test
+  public final void testReadNotBundle()
+    throws Exception
+  {
+    final var ex =
+      assertThrows(IOException.class, () -> {
+        this.readers.createReader(this.resourceOf("empty.jar"));
+      });
+    assertTrue(ex.getMessage().contains("does not contain a jar manifest"));
   }
 
   private Path resourceOf(

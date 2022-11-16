@@ -99,6 +99,13 @@ public final class OFBundleReader
       new JarFile(this.path.toFile(), false, OPEN_READ);
     this.manifest =
       this.jar.getManifest();
+
+    if (this.manifest == null) {
+      throw new IOException(
+        "File '%s' does not contain a jar manifest.".formatted(this.path)
+      );
+    }
+
     this.attributes =
       this.manifest.getMainAttributes();
 
