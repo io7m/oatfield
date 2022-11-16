@@ -19,6 +19,7 @@ package com.io7m.oatfield.tests;
 import com.io7m.oatfield.api.OFBundleReaderFactoryType;
 import com.io7m.oatfield.api.OFBundleWriterConfiguration;
 import com.io7m.oatfield.api.OFBundleWriterFactoryType;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -64,6 +65,13 @@ public abstract class OFBundleWriterContract
       this.directory.resolve("main.jar");
 
     LOG.debug("output: {}", this.output);
+  }
+
+  @AfterEach
+  public final void tearDown()
+    throws IOException
+  {
+    OFTestDirectories.deleteDirectory(this.directory);
   }
 
   /**
