@@ -24,6 +24,7 @@ module com.io7m.oatfield.vanilla
   requires static org.osgi.annotation.versioning;
 
   requires transitive com.io7m.oatfield.api;
+  requires org.slf4j;
 
   exports com.io7m.oatfield.vanilla;
 }
