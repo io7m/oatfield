@@ -26,6 +26,11 @@
     </dependency>
 
     <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.annotation.bundle</artifactId>
       <scope>provided</scope>
@@ -37,8 +42,18 @@
     </dependency>
 
     <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.resolver</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.resource</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
       <optional>true</optional>
     </dependency>
     <dependency>
@@ -80,6 +95,9 @@ Specification-Version:    $[project.version]
 
 Import-Package: \
   !aQute.*, \
+  !org.apache.felix.resolver, \
+  !org.osgi.framework, \
+  !org.osgi.service.resolver, \
   *
 ]]></bnd>
         </configuration>
@@ -124,8 +142,16 @@ Import-Package: \
                   <shadedPattern>com.io7m.oatfield.vanilla.internal.org.osgi.service</shadedPattern>
                 </relocation>
                 <relocation>
+                  <pattern>org.osgi.service.resolver</pattern>
+                  <shadedPattern>com.io7m.oatfield.vanilla.internal.org.osgi.service.resolver</shadedPattern>
+                </relocation>
+                <relocation>
                   <pattern>org.osgi.util</pattern>
                   <shadedPattern>com.io7m.oatfield.vanilla.internal.org.osgi.util</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.apache.felix</pattern>
+                  <shadedPattern>com.io7m.oatfield.vanilla.internal.org.apache.felix</shadedPattern>
                 </relocation>
                 <relocation>
                   <pattern>aQute</pattern>
@@ -148,12 +174,14 @@ Import-Package: \
                     <exclude>META-INF/*.RSA</exclude>
                     <exclude>META-INF/*.SF</exclude>
                     <exclude>META-INF/maven/biz.aQute.bnd/**</exclude>
+                    <exclude>META-INF/maven/org.apache.felix/**</exclude>
                     <exclude>META-INF/maven/org.osgi/**</exclude>
                     <exclude>META-INF/versions/**</exclude>
                     <exclude>NOTICE</exclude>
                     <exclude>OSGI-OPT/**</exclude>
                     <exclude>about.html</exclude>
                     <exclude>img/**</exclude>
+                    <exclude>org/osgi/resource/**</exclude>
                     <exclude>readme.md</exclude>
                   </excludes>
                 </filter>
